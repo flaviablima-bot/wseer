@@ -302,6 +302,7 @@
   function btoa_utf8(str) { return btoa(unescape(encodeURIComponent(str))); }
 
   function extractTransactionId(data, gateway) {
+    if (gateway === 'aven') return data?.id || data?.data?.id;
     if (gateway === 'techbynet') return data?.data?.id || data?.id;
     if (gateway === 'ironpay') return data?.hash || data?.data?.hash || data?.id || data?.data?.id;
     if (gateway === 'activepay') return data?.data?.id || data?.id || data?.data?.secureId;
@@ -320,6 +321,48 @@
   var TX_TITLE = new URLSearchParams(window.location.search).get('product_name')
     || (typeof GLOBAL_CONFIG !== 'undefined' && GLOBAL_CONFIG.product && GLOBAL_CONFIG.product.name)
     || 'Taxa de Liberação';
+
+  async function generatePixAven(creds, customerData, amountCents) {
+    const cleanCpf = (customerData.cpf || '').replace(/\D/g, '');
+    const cleanPhone = (customerData.phone || '').replace(/\D/g, '') || '11999999999';
+    const emailToUse = (customerData.email && !customerData.email.includes('cliente@') && !customerData.email.includes('desenrola.br'))
+      ? customerData.email
+      : (cleanCpf ? `cliente_${cleanCpf}@pixrecebimento.com` : `cliente_${Date.now()}@pixrecebimento.com`);
+    const payload = {
+      amount: amountCents,
+      currency: 'BRL',
+      method: 'PIX',
+      description: TX_TITLE,
+      payer: {
+        name: customerData.name || 'Cliente',
+        taxId: cleanCpf,
+        email: emailToUse,
+        phone: cleanPhone
+      },
+      items: [{
+        quantity: 1,
+        name: TX_TITLE,
+        price: amountCents,
+        type: 'DIGITAL'
+      }]
+    };
+    const res = await fetch(`${API_BASES.aven}/v1/payment`, {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + creds.api_key,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) {
+      const e = await res.json().catch(() => ({}));
+      throw new Error(e.message || (e.error ? JSON.stringify(e.error) : `Erro Aven: ${res.status}`));
+    }
+    const data = await res.json();
+    const pix = data?.data?.copypaste || data?.copypaste || null;
+    return { pixCopyPaste: pix, qrCodeUrl: null, raw: data };
+  }
 
   async function generatePixTechByNet(creds, customerData, amountCents) {
     const cleanCpf = (customerData.cpf || '').replace(/\D/g, '');
@@ -482,6 +525,7 @@
     const creds = config.gateways[gw];
     if (!creds) throw new Error('Credenciais não encontradas para ' + gw);
     switch (gw) {
+      case 'aven':      return { ...(await generatePixAven(creds, customerData, amountCents)),      gateway: gw };
       case 'techbynet': return { ...(await generatePixTechByNet(creds, customerData, amountCents)), gateway: gw };
       case 'ironpay':   return { ...(await generatePixIronPay(creds, customerData, amountCents)),   gateway: gw };
       case 'activepay': return { ...(await generatePixActivePay(creds, customerData, amountCents)), gateway: gw };
@@ -503,6 +547,7 @@
     let res;
     try {
       switch (gateway) {
+        case 'aven': res = await fetch(`${API_BASES.aven}/v1/payment/${txId}`, { headers: { 'Authorization': 'Bearer ' + creds.api_key, 'Accept': 'application/json' } }); break;
         case 'techbynet': res = await fetch(`${API_BASES.techbynet}/api/user/transactions/${txId}`, { headers: { 'x-api-key': creds.api_key, 'Accept': 'application/json' } }); break;
         case 'ironpay': res = await fetch(`${API_BASES.ironpay}/api/public/v1/transactions?api_token=${encodeURIComponent(creds.token)}&hash=${txId}`, { headers: { 'Accept': 'application/json' } }); break;
         case 'activepay': { const a = 'Basic ' + btoa_utf8(creds.public_key + ':' + creds.secret_key); res = await fetch(`${API_BASES.activepay}/v1/transactions/${txId}`, { headers: { 'Authorization': a, 'Accept': 'application/json' } }); break; }
@@ -521,6 +566,7 @@
       if (gateway === 'ironpay') { const tx = (data?.data || []).find(t => t.hash === txId); s = String(tx?.payment_status || '').toLowerCase(); }
       else if (gateway === 'techbynet' || gateway === 'unipay') s = String(data?.data?.status || '').toLowerCase();
       else if (gateway === 'mangofy') s = String(data?.payment_status || data?.data?.payment_status || data?.status || '').toLowerCase();
+      else if (gateway === 'aven') s = String(data?.status || data?.data?.status || '').toLowerCase();
       else s = String(data?.status || data?.data?.status || '').toLowerCase();
       return ['paid', 'approved', 'complete', 'completed'].includes(s);
     } catch(e) { return false; }

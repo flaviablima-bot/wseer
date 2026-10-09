@@ -6,6 +6,7 @@
 // ============================================================
 
 const UPSTREAMS = {
+  aven:      'https://api.avenpayments.com',
   techbynet: 'https://api-gateway.techbynet.com',
   activepay: 'https://api.activepay.com.br',
   ironpay:   'https://api.ironpayapp.com.br',

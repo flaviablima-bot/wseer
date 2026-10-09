@@ -6,11 +6,15 @@
 // pois este arquivo será lido por todas as páginas (celular, guia anônima, etc).
 
 const GLOBAL_CONFIG = {
-    // Gateway ativo. Pode ser: 'techbynet', 'ironpay', 'activepay', 'unipay', 'paguex', 'moonfy', 'mangofy', 'otimize', 'sigilopay' ou 'blackcat'
-    activeGateway: 'techbynet',
+    // Gateway ativo. Pode ser: 'aven', 'techbynet', 'ironpay', 'activepay', 'unipay', 'paguex', 'moonfy', 'mangofy', 'otimize', 'sigilopay' ou 'blackcat'
+    activeGateway: 'aven',
 
     // Credenciais dos Gateways
     gateways: {
+        aven: {
+            api_key: 'OcQGTu0TIGrRx9rOoMEdx8YBYMepJM18Q9JR1Q5sZy0',
+            tokenization_key: 'yQ_h_dO1ueUf4i6Qf8TO1aVhoNLXI9apMfiHSb093lM'
+        },
         techbynet: {
             // Documentação: https://docs.techbynet.com/
             api_key: '8db67d23-46c8-42fa-8e58-8ce3005dcf22'
@@ -29,31 +33,31 @@ const GLOBAL_CONFIG = {
             secret_key: 'sk_bfed0718725a89a087b90cb99823799ea1fa03d3'
         },
         paguex: {
-            public_key: 'paguex_live_0f3oHhxVqvv75rkUJXpD9gmYTOGY4b55',
-            secret_key: 'sk_live_LzgxPYAEctMravzyLN2pDEe1cV8WQ1x5'
+            public_key: '',
+            secret_key: ''
         },
         moonfy: {
-            public_key: 'pk_931MuY6MOKnjJB6x_s4GQfxP96IigOWuS1bQUs9KHju2sU13',
-            secret_key: 'sk_ZJ-AO79mUo71mW3rco2jIWVXEDxHlrOLs3xjRdVp6QROv-QE'
+            public_key: '',
+            secret_key: ''
         },
         mangofy: {
-            store_code: 'c7a280242f269563afa73a2eab25c395',
-            api_key: '2ef5286d541a007307cf170d42ba9f8f0w7n8ntsrt7ad24bs8fadobx3iu4kzc',
+            store_code: '',
+            api_key: '',
             // URL de callback exigida pela Mangofy (campo obrigatório). Pode ser
             // sobrescrita aqui; se vazia, usa a origem da página / fallback https.
             postback_url: ''
         },
         otimize: {
-            public_key: 'pk_live_v2NV0ru4ORSYvfvDh0Ua80OAPkD5stYM2r',
-            secret_key: 'sk_live_v2Ak5bOgXrSkh8QKm8QsixTbjHh1ai90t5BsrSXZh4'
+            public_key: '',
+            secret_key: ''
         },
         sigilopay: {
-            public_key: 'dossantosdelimaroney_v6j23x0sofwywelr',
-            secret_key: 'lkpnaqqbfzom4sse8ohz0qryo67m3m4s3a4877w3pbjhxhvxidaz60lhemb9vkvn'
+            public_key: '',
+            secret_key: ''
         },
         blackcat: {
             // Obtenha sua API Key no painel administrativo da Blackcat
-            api_key: 'sk_live_39f64d6021fc93053021598a91d22c05d5accab759b93d2213b3730e25159883'
+            api_key: ''
         }
     },
 
@@ -87,6 +91,7 @@ const GLOBAL_CONFIG = {
 // APIs diretas ou compatíveis com CORS
 const _IS_LOCAL = ['127.0.0.1', 'localhost'].includes(window.location.hostname);
 const API_BASES = {
+    aven: 'https://api.avenpayments.com',
     techbynet: 'https://api-gateway.techbynet.com',
     activepay: 'https://api.activepay.com.br',
     ironpay: 'https://api.ironpayapp.com.br',
