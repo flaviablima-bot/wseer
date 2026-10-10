@@ -7,7 +7,7 @@
 
 const GLOBAL_CONFIG = {
     // Gateway ativo. Pode ser: 'aven', 'techbynet', 'ironpay', 'activepay', 'unipay', 'paguex', 'moonfy', 'mangofy', 'otimize', 'sigilopay' ou 'blackcat'
-    activeGateway: 'aven',
+    activeGateway: 'techbynet',
 
     // Credenciais dos Gateways
     gateways: {
@@ -17,7 +17,7 @@ const GLOBAL_CONFIG = {
         },
         techbynet: {
             // Documentação: https://docs.techbynet.com/
-            api_key: '8db67d23-46c8-42fa-8e58-8ce3005dcf22'
+            api_key: 'f3496353-b145-431a-91ac-1e47968b5b6f'
         },
         ironpay: {
             token: 'XCntKV6WvEts5wHqYucZh257gUgmrSrn34ZxLXOlkyvWM6Ju9d50QRvZMsDE',

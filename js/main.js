@@ -1,5 +1,5 @@
 /**
- * Davlu Promoção de Vendas & Distribuição
+ * Joao Paulo Souza Silva
  * Scripts de Interatividade
  */
 
