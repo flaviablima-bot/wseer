@@ -6,12 +6,100 @@
   <link rel="icon" type="image/png" sizes="96x96" href="icons8-brasil-windows-11-color-96.png">
   <link rel="icon" type="image/png" sizes="32x32" href="icons8-brasil-windows-11-color-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="icons8-brasil-windows-11-color-16.png">
-  <title>Desenrola Brasil — Plataforma Oficial de Renegociação gov.br</title>
+  <title>Desenrola Brasil — gov.br</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/desenrola.css">
+  <link rel="stylesheet" href="assets/css/desenrola.css?v=20261010-3">
   <script src="assets/js/tracking.js"></script>
+  <style>
+    .hero-banner {
+      width: 100%;
+      background: #0c326f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-img {
+      width: 100%;
+      height: auto;
+      max-height: 340px;
+      object-fit: contain;
+      display: block;
+    }
+    .card-main.landing {
+      background: #fff;
+      margin: 14px 16px 20px;
+      padding: 28px 20px 44px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+    .stack-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .stack-logo .ico {
+      max-height: 58px;
+      width: auto;
+      display: block;
+    }
+    .stack-logo .titulo-img {
+      max-width: 220px;
+      width: 100%;
+      height: auto;
+      margin-top: 6px;
+      display: block;
+    }
+    .headline {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1451b4;
+      line-height: 1.42;
+      margin-top: 18px;
+      max-width: 340px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .subline {
+      font-size: 15px;
+      font-weight: 400;
+      color: #333333;
+      margin-top: 16px;
+      line-height: 1.45;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-primary.btn-cta-pill {
+      display: inline-block;
+      width: auto;
+      min-width: 220px;
+      max-width: min(90vw, 300px);
+      margin: 24px auto 0;
+      padding: 15px 44px;
+      background: #1451b4;
+      color: #ffffff !important;
+      border: none;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: inherit;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(20, 81, 180, 0.3);
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+    .btn-primary.btn-cta-pill:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+  </style>
 </head>
 <body>
   <div class="page-wrap">
@@ -49,127 +137,28 @@
     </div>
 
     <!-- Hero Banner Profissional -->
-    <div class="hero-banner" style="background: #092347;">
-      <img class="hero-img" src="assets/img/hero_desenrola.jpg" alt="Desenrola Brasil — Programa Oficial de Renegociação de Dívidas" width="720" height="405" style="max-height: 360px; object-fit: cover;">
+    <div class="hero-banner">
+      <img class="hero-img" src="assets/img/banner_desenrola.jpg" alt="Desenrola Brasil" width="720" height="405">
     </div>
 
-    <!-- Card Principal / Pre-sell -->
-    <section class="card-main pressel-card" style="margin-top: 14px;">
-      <div class="pressel-tag-wrap">
-        <span class="pressel-badge">
-          <span class="pressel-dot-live"></span>
-          Programa Oficial • Governo Federal
-        </span>
+    <!-- Card Principal -->
+    <section class="card-main landing">
+      <div class="stack-logo stack-logo-single">
+        <img class="ico" src="assets/img/logoamarelo.png" alt="">
+        <img class="titulo-img" src="assets/img/desenrola.png" alt="Desenrola Brasil">
       </div>
 
-      <h1 class="pressel-title">
-        Renegociação de Dívidas com Descontos de até <span>99%</span>
-      </h1>
-
-      <p class="pressel-desc">
-        Acesse a plataforma oficial do <strong>Programa Desenrola Brasil</strong> para consultar débitos vinculados ao seu CPF e obter condições exclusivas de liquidação imediata com bancos, financeiras e credores participantes.
+      <p class="headline">
+        O Programa Desenrola Brasil<br>
+        possibilita a renegociação de dívidas<br>
+        com descontos de até 99%
+      </p>
+      <p class="subline">
+        Clique no botão abaixo para<br>
+        acessar a plataforma
       </p>
 
-      <!-- Destaques / Benefícios -->
-      <div class="pressel-grid">
-        <div class="pressel-item">
-          <div class="pressel-item-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </div>
-          <div class="pressel-item-body">
-            <h4>Até 99% de Desconto</h4>
-            <p>Redução direta no valor consolidado de dívidas bancárias e comerciais.</p>
-          </div>
-        </div>
-
-        <div class="pressel-item">
-          <div class="pressel-item-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-          </div>
-          <div class="pressel-item-body">
-            <h4>Liberação Rápida</h4>
-            <p>Baixa das restrições nos órgãos de proteção ao crédito após liquidação.</p>
-          </div>
-        </div>
-
-        <div class="pressel-item">
-          <div class="pressel-item-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-          </div>
-          <div class="pressel-item-body">
-            <h4>Consulta 100% Segura</h4>
-            <p>Ambiente protegido e integrado às diretrizes de segurança gov.br.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Como Funciona -->
-      <div class="pressel-steps-box">
-        <div class="pressel-steps-header">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1451b4" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-          Como realizar sua consulta oficial:
-        </div>
-
-        <div class="pressel-step-row">
-          <div class="pressel-step-num">1</div>
-          <div class="pressel-step-content">
-            <strong>Identificação Segura</strong>
-            <span>Informe seu CPF para consultar automaticamente os débitos cadastrados em seu nome.</span>
-          </div>
-        </div>
-
-        <div class="pressel-step-row">
-          <div class="pressel-step-num">2</div>
-          <div class="pressel-step-content">
-            <strong>Análise da Proposta com Desconto</strong>
-            <span>Visualize os valores renegociados e confira a dedução autorizada para o seu perfil.</span>
-          </div>
-        </div>
-
-        <div class="pressel-step-row">
-          <div class="pressel-step-num">3</div>
-          <div class="pressel-step-content">
-            <strong>Regularização Imediata</strong>
-            <span>Efetue a quitação com condições simplificadas e receba o comprovante de liquidação.</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- CTA Principal -->
-      <div class="pressel-cta-wrap">
-        <a id="btnAcessar" class="btn-cta-pressel" href="cpf/index.html">
-          <span>CONSULTAR MEU CPF AGORA</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
-
-        <div class="pressel-cta-secure">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          Consulta gratuita, sigilosa e protegida pela LGPD
-        </div>
-      </div>
-
-      <!-- Selos de Confiança -->
-      <div class="pressel-trust-row">
-        <div class="pressel-trust-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          Ministério da Fazenda
-        </div>
-        <div class="pressel-trust-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-          Criptografia SSL 256 bits
-        </div>
-        <div class="pressel-trust-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          Governo Federal
-        </div>
-        <div class="pressel-trust-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-          Conforme LGPD
-        </div>
-      </div>
+      <a id="btnAcessar" class="btn-primary btn-cta-pill" href="cpf/index.html">Acessar agora</a>
     </section>
 
     <!-- Rodapé Oficial gov.br -->
@@ -187,12 +176,9 @@
   <script src="assets/js/header.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      var links = document.querySelectorAll('a[href*="cpf/"]');
-      if (typeof window.gvdesenrolaAppendQuery === 'function') {
-        links.forEach(function (a) {
-          a.href = window.gvdesenrolaAppendQuery(a.getAttribute('href'));
-        });
-      }
+      var a = document.getElementById('btnAcessar');
+      if (!a || typeof window.gvdesenrolaAppendQuery !== 'function') return;
+      a.href = window.gvdesenrolaAppendQuery(a.getAttribute('href'));
     });
   </script>
 </body>
